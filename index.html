@@ -15,6 +15,8 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.153.0/examples/js/loaders/GLTFLoader.js"></script>
 
     <script>
+        console.log('Three.js version:', THREE);
+
         let scene, camera, renderer, controls, logo;
 
         function init() {
@@ -41,15 +43,20 @@
             // Carica il logo 3D
             const loader = new THREE.GLTFLoader();
             loader.load('logo.gltf', function(gltf) {
+                console.log('Model loaded:', gltf);
                 logo = gltf.scene;
                 scene.add(logo);
+            }, undefined, function(error) {
+                console.error('An error occurred:', error);
             });
 
             // Aggiungi i controlli per l'orbita
             controls = new THREE.OrbitControls(camera, renderer.domElement);
-            controls.enableDamping = true; // Fa sembrare l'interazione più fluida
+            controls.enableDamping = true; 
             controls.dampingFactor = 0.25;
             controls.enableZoom = true;
+
+            console.log('Controls initialized:', controls);
 
             // Render loop
             animate();
