@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR QR Code</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+</head>
+<body>
+    <h1>Scansiona il QR Code per vedere il modello 3D in AR</h1>
+    
+    <canvas id="qrcode"></canvas>
+<a href="https://tuosito.com/modello.usdz" rel="ar">Visualizza in AR</a>
+    <script>
+        var qr = new QRious({
+            element: document.getElementById('qrcode'),
+            value: 'https://tuosito.com/modello.usdz', // URL del modello 3D
+            size: 250
+        });
+    </script>
+</body>
+</html>
